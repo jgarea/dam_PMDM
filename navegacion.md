@@ -512,4 +512,6 @@ SecondScreen(navController,it.arguments?.getString("text"))
 ```
 
 # 5. Probamos la app y ya deberia funcionar la navegación entre pantallas.
+github del proyecto:
+https://github.com/resuadam2/TutorialCompose/tree/master/navigation
 
