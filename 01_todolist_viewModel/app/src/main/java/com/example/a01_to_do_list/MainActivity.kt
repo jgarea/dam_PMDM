@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -52,13 +53,15 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("StateFlowValueCalledInComposition")
 @Composable
 fun Contenedor(modifier: Modifier = Modifier,todoViewModel: TodoViewModel = viewModel() ) {
+    val state by todoViewModel.uiState.collectAsState()
+
     //var text by remember { mutableStateOf("") }
     //val names = remember { mutableStateListOf(Nombre("Pepe"), Nombre("Luis")) }
 
     Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
         // Campo de texto
         TextField(
-            value = todoViewModel.uiState.value.name,
+            value = state.name,
             onValueChange = { todoViewModel.onNameChange(it) },
             label = { Text("Introduce el texto") },
             modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp),
